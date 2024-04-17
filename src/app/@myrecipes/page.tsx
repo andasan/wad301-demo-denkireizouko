@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect } from "react";
 
 import { getRecipeItemsAction } from "@/actions/recipeActions";
+import ImageContainer from "@/components/image-container";
 import { useFridgeStore } from "@/providers/fridge-store-provider";
 
 export default function MyRecipes() {
@@ -37,7 +37,7 @@ export default function MyRecipes() {
               className="flex gap-4 items-center py-4 border-b border-gray-200"
             >
               <div className="relative aspect-square h-12 w-12">
-                <Image
+                <ImageContainer
                   src={item.image}
                   alt={item.title}
                   priority

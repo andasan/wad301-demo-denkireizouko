@@ -1,5 +1,4 @@
-import Image from "next/image";
-
+import ImageContainer from "@/components/image-container";
 import { getRecipe } from "@/lib/spoonacular";
 import { Modal } from "./modal";
 
@@ -15,7 +14,13 @@ export default async function RecipeModal({
   return (
     <Modal>
       <h1 className="text-2xl font-bold">{recipe.title}</h1>
-      <Image src={recipe.image} alt={recipe.title} width={300} height={300} />
+      <ImageContainer
+        src={recipe.image}
+        alt={recipe.title}
+        width={300}
+        height={300}
+        className="w-full"
+      />
       <p>{truncatedSummary}</p>
     </Modal>
   );

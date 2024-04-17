@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 import { removeRecipeItemAction } from "@/actions/recipeActions";
 import { addShoppingListAction } from "@/actions/shoppingListActions";
+import ImageContainer from "@/components/image-container";
 import {
   Accordion,
   AccordionContent,
@@ -109,7 +109,7 @@ export function RecipesAccordion({ recipes }: { recipes: CustomRecipes[] }) {
           </AccordionTrigger>
           <AccordionContent className="p-4 bg-gray-100">
             <div className="flex flex-col xl:flex-row gap-3 mb-5 pb-5 border border-transparent border-b-gray-300">
-              <Image
+              <ImageContainer
                 src={recipe.image}
                 alt={recipe.title}
                 className="w-full h-64 object-cover rounded-md"

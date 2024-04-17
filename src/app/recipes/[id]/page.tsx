@@ -1,5 +1,4 @@
-import Image from "next/image";
-
+import ImageContainer from "@/components/image-container";
 import { getRecipe } from "@/lib/spoonacular";
 import type { AnalyzedInstruction } from "@/types";
 
@@ -14,7 +13,7 @@ export default async function RecipeDetailPage({
     <div>
       <h1 className="text-2xl font-bold mb-4">{recipe.title}</h1>
       <div className="relative w-full h-96">
-        <Image
+        <ImageContainer
           src={recipe.image}
           alt={recipe.title}
           className="object-cover"
