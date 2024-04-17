@@ -29,7 +29,7 @@ export default async function RecipesPage({
     <>
       <Search searchType="recipe" placeholder="Search Recipes" />
       <div className="flex flex-col">
-        <ul className="mt-5 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-4">
+        <ul className="mt-5 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 sm:gap-4">
           {generatedRecipes.map((recipe: Recipe) => (
             <RecipeItem key={recipe.id} recipe={recipe} />
           ))}

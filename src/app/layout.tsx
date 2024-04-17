@@ -36,7 +36,7 @@ export default function RootLayout({
           <FridgeStoreProvider>
             <main className="w-screen min-h-screen flex flex-col">
               <Header />
-              <section className="min-h-[calc(100vh_-_6rem)] grid grid-cols-1 md:grid-cols-[300px_minmax(300px,_1fr)_300px]">
+              <section className="min-h-[calc(100vh_-_6rem)] grid grid-cols-1 lg:grid-cols-[300px_minmax(300px,_1fr)_300px]">
                 <aside>
                   <SignedIn>{myfridge}</SignedIn>
                 </aside>

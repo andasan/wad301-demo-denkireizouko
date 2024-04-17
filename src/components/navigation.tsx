@@ -20,7 +20,7 @@ export default function NavigationList() {
       <NavItem href="/recipes">Recipes</NavItem>
       <SignedIn>
         <NavItem href="/shopping">Shopping List</NavItem>
-        <NavItem href="/profile">
+        <NavItem>
           <SignOutButton>
             <button
               type="button"
@@ -68,7 +68,7 @@ function NavItem({
     <li
       className={cn(
         pathname === href ? "font-bold" : "font-normal",
-        "md:mr-12",
+        !!href && "md:mr-12",
       )}
     >
       {href ? <Link href={href}>{children}</Link> : children}

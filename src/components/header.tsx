@@ -6,12 +6,12 @@ import NavigationList from "./navigation";
 export default function Header() {
   return (
     <header className="shadow mb-2">
-      <div className="relative flex max-w-screen-xl flex-col overflow-hidden px-4 py-4 md:mx-auto md:flex-row md:items-center">
+      <div className="relative flex flex-col overflow-hidden px-4 py-4 md:mx-auto md:flex-row md:items-center bg-teal-300">
         <Link
           href="/"
           className="flex cursor-pointer items-center whitespace-nowrap text-2xl font-black"
         >
-          <span className="flex items-center mr-2 text-4xl text-green-500 h-4 w-4 lg:h-10 lg:w-10">
+          <span className="flex items-center mr-2 text-4xl text-green-500 h-4 w-4">
             <Image
               src="/fridge-icon.svg"
               alt="ReizApp Logo"
@@ -38,8 +38,8 @@ export default function Header() {
           >
             <title>Menu</title>
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M4 6h16M4 12h16M4 18h16"
             />
           </svg>

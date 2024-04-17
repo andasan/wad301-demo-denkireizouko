@@ -1,3 +1,4 @@
-export default function Default() {
-  return null;
+import MyRecipes from "./page";
+export default function MyRecipesDefault() {
+  return <MyRecipes />;
 }

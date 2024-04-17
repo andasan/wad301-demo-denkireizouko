@@ -1,3 +1,4 @@
-export default function Default() {
-  return null;
+import ToBuy from "./page";
+export default function ToBuyDefault() {
+  return <ToBuy />;
 }
