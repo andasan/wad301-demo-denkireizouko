@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "FridgeItem" ALTER COLUMN "quantity" DROP NOT NULL,
+ALTER COLUMN "price" DROP NOT NULL,
+ALTER COLUMN "expiry" DROP NOT NULL;
