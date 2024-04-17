@@ -12,11 +12,6 @@ import {
 } from "@/actions/fridgeActions";
 import { useFridgeStore } from "@/providers/fridge-store-provider";
 
-const fetchFridgeItems = async () => {
-  const items = await getFridgeItemsAction();
-  return items;
-};
-
 export default function MyFridge() {
   const { myFridge, removeFromFridge, setFridge } = useFridgeStore(
     (state) => state,
@@ -24,12 +19,17 @@ export default function MyFridge() {
 
   const [filteredFridge, setFilteredFridge] = useState<FridgeItem[]>([]);
 
+  const fetchFridgeItems = useCallback(async () => {
+    const items = await getFridgeItemsAction();
+    return items;
+  }, []);
+
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     fetchFridgeItems().then((items) => {
       setFridge(items);
     });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     setFilteredFridge(myFridge);

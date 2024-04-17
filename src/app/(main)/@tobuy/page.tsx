@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
 import {
   getShoppingListAction,
@@ -9,23 +9,23 @@ import {
 } from "@/actions/shoppingListActions";
 import { useFridgeStore } from "@/providers/fridge-store-provider";
 
-const fetchShoppingList = async () => {
-  const items = await getShoppingListAction();
-  return items;
-};
-
 const BASE_IMAGE_URL = "https://img.spoonacular.com/ingredients_100x100";
 
 export default function ToBuy() {
   const { myShoppingList, setShoppingList, removeShoppingList } =
     useFridgeStore((state) => state);
 
+  const fetchShoppingList = useCallback(async () => {
+    const items = await getShoppingListAction();
+    return items;
+  }, []);
+
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     fetchShoppingList().then((items) => {
       setShoppingList(items);
     });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleRemoveShoppingItem = async (id: string) => {
     await removeShoppingItemAction(id);

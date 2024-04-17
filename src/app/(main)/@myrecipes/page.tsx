@@ -2,25 +2,25 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
 import { getRecipeItemsAction } from "@/actions/recipeActions";
 import { useFridgeStore } from "@/providers/fridge-store-provider";
 
-const fetchRecipeItems = async () => {
-  const items = await getRecipeItemsAction();
-  return items;
-};
-
 export default function MyRecipes() {
   const { myRecipes, setRecipes } = useFridgeStore((state) => state);
+
+  const fetchRecipeItems = useCallback(async () => {
+    const items = await getRecipeItemsAction();
+    return items;
+  }, []);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     fetchRecipeItems().then((items) => {
       setRecipes(items);
     });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <section className="relative h-full">

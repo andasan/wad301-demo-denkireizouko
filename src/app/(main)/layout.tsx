@@ -1,6 +1,6 @@
 import { SignedIn } from "@clerk/nextjs";
 
-import RightSideBar from "./_right-side-bar";
+import RightSideBar from "./_components/right-side-bar";
 
 export default function SignedInLayout({
   children,
