@@ -11,28 +11,28 @@ import { FridgeStoreProvider } from "@/providers/fridge-store-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "Reizouko App",
-	description: "A simple app to manage your fridge",
+  title: "Reizouko App",
+  description: "A simple app to manage your fridge",
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<ClerkProvider>
-			<html lang="en">
-				<body className={inter.className}>
-					<FridgeStoreProvider>
-						<main className="w-screen min-h-screen flex flex-col">
-							<Header />
-							{children}
-						</main>
-					</FridgeStoreProvider>
-					<Toaster />
-				</body>
-			</html>
-		</ClerkProvider>
-	);
+  return (
+    <ClerkProvider>
+      <html lang="en">
+        <body className={inter.className}>
+          <FridgeStoreProvider>
+            <main className="w-screen min-h-screen flex flex-col">
+              <Header />
+              {children}
+            </main>
+          </FridgeStoreProvider>
+          <Toaster />
+        </body>
+      </html>
+    </ClerkProvider>
+  );
 }

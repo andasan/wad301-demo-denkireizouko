@@ -6,32 +6,32 @@ import { type StoreApi, useStore } from "zustand";
 import { type FridgeStore, createFridgeStore } from "@/store/fridgeStore";
 
 export const FridgeStoreContext = createContext<StoreApi<FridgeStore> | null>(
-	null,
+  null,
 );
 
 export interface FridgeStoreProviderProps {
-	children: ReactNode;
+  children: ReactNode;
 }
 
 export const FridgeStoreProvider = ({ children }: FridgeStoreProviderProps) => {
-	const storeRef = useRef<StoreApi<FridgeStore>>();
-	if (!storeRef.current) {
-		storeRef.current = createFridgeStore();
-	}
+  const storeRef = useRef<StoreApi<FridgeStore>>();
+  if (!storeRef.current) {
+    storeRef.current = createFridgeStore();
+  }
 
-	return (
-		<FridgeStoreContext.Provider value={storeRef.current}>
-			{children}
-		</FridgeStoreContext.Provider>
-	);
+  return (
+    <FridgeStoreContext.Provider value={storeRef.current}>
+      {children}
+    </FridgeStoreContext.Provider>
+  );
 };
 
 export const useFridgeStore = <T,>(selector: (store: FridgeStore) => T): T => {
-	const fridgeStoreContext = useContext(FridgeStoreContext);
+  const fridgeStoreContext = useContext(FridgeStoreContext);
 
-	if (!fridgeStoreContext) {
-		throw new Error("useFridgeStore must be use within FridgeStoreProvider");
-	}
+  if (!fridgeStoreContext) {
+    throw new Error("useFridgeStore must be use within FridgeStoreProvider");
+  }
 
-	return useStore(fridgeStoreContext, selector);
+  return useStore(fridgeStoreContext, selector);
 };

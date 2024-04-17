@@ -3,19 +3,19 @@
 import { usePathname } from "next/navigation";
 
 export default function RightSideBar({
-	tobuy,
-	myrecipes,
+  tobuy,
+  myrecipes,
 }: {
-	tobuy: React.ReactNode;
-	myrecipes: React.ReactNode;
+  tobuy: React.ReactNode;
+  myrecipes: React.ReactNode;
 }) {
-	const pathname = usePathname();
+  const pathname = usePathname();
 
-	return (
-		<>
-			{pathname === "/shopping" && tobuy}
-			{(pathname.includes("/recipes") || pathname.includes("/shopping/")) &&
-				myrecipes}
-		</>
-	);
+  return (
+    <>
+      {pathname === "/shopping" && tobuy}
+      {(pathname.includes("/recipes") || pathname.includes("/shopping/")) &&
+        myrecipes}
+    </>
+  );
 }
