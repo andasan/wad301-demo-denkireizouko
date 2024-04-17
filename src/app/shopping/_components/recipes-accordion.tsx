@@ -13,6 +13,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useToast } from "@/components/ui/use-toast";
 import { useFridgeStore } from "@/providers/fridge-store-provider";
 import type {
   CustomRecipes,
@@ -23,9 +24,9 @@ import type {
 
 export function RecipesAccordion({ recipes }: { recipes: CustomRecipes[] }) {
   const [disabled, setDisabled] = useState(false);
-  const { myFridge, setShoppingList, removeRecipe } = useFridgeStore(
-    (state) => state,
-  );
+  const { myFridge, myShoppingList, addShoppingList, removeRecipe } =
+    useFridgeStore((state) => state);
+  const { toast } = useToast();
 
   const router = useRouter();
   const pathname = usePathname();
@@ -38,7 +39,15 @@ export function RecipesAccordion({ recipes }: { recipes: CustomRecipes[] }) {
 
     const newIngredients = ingredients
       .filter(
-        (ingredient) => !myFridge.some((item) => item.name === ingredient.name),
+        (ingredient, index, self) =>
+          index ===
+            self.findIndex(
+              (t) => t.id === ingredient.id, // Check for duplicate IDs
+            ) &&
+          !myFridge.some(
+            (item) => item.name.toLowerCase() === ingredient.name.toLowerCase(),
+          ) &&
+          !myShoppingList.some((item) => item.ingredientId === ingredient.id),
       )
       .map((ingredient) => ({
         ingredientId: ingredient.id,
@@ -48,8 +57,24 @@ export function RecipesAccordion({ recipes }: { recipes: CustomRecipes[] }) {
         image: ingredient.image,
       }));
 
+    if (newIngredients.length === 0) {
+      toast({
+        title: "No ingredients to add",
+        description: "All ingredients are already in your Shopping List",
+        variant: "destructive",
+      });
+      return;
+    }
+
     const savedShoppingList = await addShoppingListAction(newIngredients);
-    setShoppingList(savedShoppingList);
+    addShoppingList(savedShoppingList);
+
+    toast({
+      title: "Added to Shopping List",
+      description:
+        "The missing ingredients have been added to your Shopping List",
+      variant: "default",
+    });
   };
 
   const handleRemoveRecipe = async (id: string, recipeId: number) => {
@@ -83,7 +108,7 @@ export function RecipesAccordion({ recipes }: { recipes: CustomRecipes[] }) {
             <h3 className="text-lg font-semibold">{recipe.title}</h3>
           </AccordionTrigger>
           <AccordionContent className="p-4 bg-gray-100">
-            <div className="flex gap-3 mb-5 pb-5 border border-transparent border-b-gray-300">
+            <div className="flex flex-col xl:flex-row gap-3 mb-5 pb-5 border border-transparent border-b-gray-300">
               <Image
                 src={recipe.image}
                 alt={recipe.title}

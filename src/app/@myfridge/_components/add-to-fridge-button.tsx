@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { addFridgeItemAction } from "@/actions/fridgeActions";
+import { removeShoppingItemAction } from "@/actions/shoppingListActions";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -20,7 +21,9 @@ import type { Prisma } from "@prisma/client";
 
 export default function AddToFridgeButton() {
   const [isOpen, setIsOpen] = useState(false);
-  const { addToFridge } = useFridgeStore((state) => state);
+  const { addToFridge, myShoppingList, removeShoppingList } = useFridgeStore(
+    (state) => state,
+  );
   const { toast } = useToast();
 
   const handleAddToFridge = async (formData: FormData) => {
@@ -33,6 +36,15 @@ export default function AddToFridgeButton() {
 
     const storedFridgeItem = await addFridgeItemAction(newFridgeItem);
     addToFridge(storedFridgeItem);
+
+    //remove storedFridgeItem from shopping list if it exits
+    const shoppingItem = myShoppingList.find(
+      (item) => item.name.toLowerCase() === storedFridgeItem.name.toLowerCase(),
+    );
+    if (shoppingItem) {
+      await removeShoppingItemAction(shoppingItem.id);
+      removeShoppingList(shoppingItem.id);
+    }
 
     setIsOpen(false);
 

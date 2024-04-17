@@ -18,7 +18,7 @@ export type FridgeActions = {
   removeRecipe: (id: number) => void;
   setRecipes: (recipes: Recipe[]) => void;
 
-  addShoppingList: (list: ShoppingList) => void;
+  addShoppingList: (list: ShoppingList[]) => void;
   removeShoppingList: (id: string) => void;
   setShoppingList: (lists: ShoppingList[]) => void;
 };
@@ -76,7 +76,7 @@ export const createFridgeStore = (
       // Shopping List
       addShoppingList: (list) =>
         set((state) => {
-          state.myShoppingList = [...state.myShoppingList, list];
+          state.myShoppingList = [...state.myShoppingList, ...list];
         }),
       removeShoppingList: (id) =>
         set((state) => {

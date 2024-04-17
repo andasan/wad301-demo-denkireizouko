@@ -1,4 +1,5 @@
 import { ClerkProvider, SignedIn } from "@clerk/nextjs";
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
@@ -33,6 +34,8 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
+          {modal}
+          <div id="modal-root" />
           <FridgeStoreProvider>
             <main className="w-screen min-h-screen flex flex-col">
               <Header />
@@ -50,8 +53,7 @@ export default function RootLayout({
             </main>
           </FridgeStoreProvider>
           <Toaster />
-          {modal}
-          <div id="modal-root" />
+          <Analytics />
         </body>
       </html>
     </ClerkProvider>

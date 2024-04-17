@@ -52,7 +52,7 @@ export default function AddRecipeButton({ recipe }: { recipe: Recipe }) {
       .catch((error) => {
         toast({
           title: "Error adding recipe",
-          description: "There was an error adding the recipe to your fridge",
+          description: error.message,
           variant: "destructive",
         });
       })
