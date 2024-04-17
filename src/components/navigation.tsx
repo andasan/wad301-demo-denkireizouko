@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import {
-	SignedIn,
-	SignedOut,
 	SignInButton,
 	SignOutButton,
+	SignedIn,
+	SignedOut,
 } from "@clerk/nextjs";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";

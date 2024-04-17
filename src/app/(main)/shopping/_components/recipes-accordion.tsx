@@ -1,16 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 
-import type {
-	GetRecipeInformation,
-	ExtendedIngredient,
-	ExtendedIngredientOrigin,
-	CustomRecipes,
-} from "@/types";
+import { removeRecipeItemAction } from "@/actions/recipeActions";
+import { addShoppingListAction } from "@/actions/shoppingListActions";
 import {
 	Accordion,
 	AccordionContent,
@@ -18,8 +14,12 @@ import {
 	AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useFridgeStore } from "@/providers/fridge-store-provider";
-import { addShoppingListAction } from "@/actions/shoppingListActions";
-import { removeRecipeItemAction } from "@/actions/recipeActions";
+import type {
+	CustomRecipes,
+	ExtendedIngredient,
+	ExtendedIngredientOrigin,
+	GetRecipeInformation,
+} from "@/types";
 
 export function RecipesAccordion({
 	recipes,

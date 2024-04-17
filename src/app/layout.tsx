@@ -1,12 +1,12 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
 
 import "./globals.css";
 
-import { FridgeStoreProvider } from "@/providers/fridge-store-provider";
 import Header from "@/components/header";
 import { Toaster } from "@/components/ui/toaster";
+import { FridgeStoreProvider } from "@/providers/fridge-store-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 

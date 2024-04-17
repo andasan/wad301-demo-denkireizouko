@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
 import Image from "next/image";
+import { useEffect } from "react";
 
-import { useFridgeStore } from "@/providers/fridge-store-provider";
 import {
 	getShoppingListAction,
 	removeShoppingItemAction,
 } from "@/actions/shoppingListActions";
+import { useFridgeStore } from "@/providers/fridge-store-provider";
 
 const fetchShoppingList = async () => {
 	const items = await getShoppingListAction();

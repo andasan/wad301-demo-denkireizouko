@@ -1,7 +1,7 @@
 "use server";
 
-import type { Prisma } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
+import type { Prisma } from "@prisma/client";
 
 export const addRecipeItemAction = async (
 	recipeItem: Prisma.RecipeCreateInput,

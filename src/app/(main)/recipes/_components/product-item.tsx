@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 import type { Recipe } from "@/types";
 import AddRecipeButton from "./add-recipe-button";

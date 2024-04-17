@@ -1,8 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import { unstable_noStore as noStore } from "next/cache";
 
-import type { GetRecipeInformation } from "@/types";
 import { getManyRecipes } from "@/lib/spoonacular";
+import type { GetRecipeInformation } from "@/types";
 import { RecipesAccordion } from "./_components/recipes-accordion";
 
 export default async function ShoppingPage() {

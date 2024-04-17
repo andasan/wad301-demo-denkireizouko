@@ -1,6 +1,6 @@
-import { createStore } from "zustand/vanilla";
 import type { FridgeItem, Recipe, ShoppingList } from "@prisma/client";
 import { immer } from "zustand/middleware/immer";
+import { createStore } from "zustand/vanilla";
 
 export type FridgeState = {
 	myFridge: FridgeItem[];

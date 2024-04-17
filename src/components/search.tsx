@@ -1,9 +1,9 @@
 "use client";
 
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { useDebouncedCallback } from "use-debounce";
 import clsx from "clsx";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useDebouncedCallback } from "use-debounce";
 
 export default function Search({
 	searchType,

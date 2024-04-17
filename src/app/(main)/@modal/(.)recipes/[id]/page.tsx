@@ -1,5 +1,5 @@
-import { Modal } from "./modal";
 import { getRecipe } from "@/lib/spoonacular";
+import { Modal } from "./modal";
 
 export default async function RecipeModal({
 	params: { id: recipeId },

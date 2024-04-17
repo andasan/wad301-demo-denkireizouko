@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 
-import { useFridgeStore } from "@/providers/fridge-store-provider";
 import { getRecipeItemsAction } from "@/actions/recipeActions";
+import { useFridgeStore } from "@/providers/fridge-store-provider";
 
 const fetchRecipeItems = async () => {
 	const items = await getRecipeItemsAction();

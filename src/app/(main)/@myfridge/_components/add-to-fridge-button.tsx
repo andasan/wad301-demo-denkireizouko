@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { DocumentPlusIcon } from "@heroicons/react/20/solid";
+import { addFridgeItemAction } from "@/actions/fridgeActions";
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -15,8 +15,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import { useFridgeStore } from "@/providers/fridge-store-provider";
+import { DocumentPlusIcon } from "@heroicons/react/20/solid";
 import type { Prisma } from "@prisma/client";
-import { addFridgeItemAction } from "@/actions/fridgeActions";
 
 export default function AddToFridgeButton() {
 	const [isOpen, setIsOpen] = useState(false);

@@ -1,9 +1,9 @@
-import type { Recipe } from "@/types";
 import { getRecipes } from "@/lib/spoonacular";
+import type { Recipe } from "@/types";
 
-import RecipeItem from "./_components/product-item";
-import Pagination from "./_components/pagination";
 import Search from "@/components/search";
+import Pagination from "./_components/pagination";
+import RecipeItem from "./_components/product-item";
 
 export default async function RecipesPage({
 	searchParams,

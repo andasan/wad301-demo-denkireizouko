@@ -1,16 +1,16 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 
+import Search from "@/components/search";
 import type { FridgeItem } from "@prisma/client";
 import AddToFridgeButton from "./_components/add-to-fridge-button";
-import Search from "@/components/search";
 
-import { useFridgeStore } from "@/providers/fridge-store-provider";
 import {
 	getFridgeItemsAction,
 	removeFridgeItemAction,
 } from "@/actions/fridgeActions";
+import { useFridgeStore } from "@/providers/fridge-store-provider";
 
 const fetchFridgeItems = async () => {
 	const items = await getFridgeItemsAction();

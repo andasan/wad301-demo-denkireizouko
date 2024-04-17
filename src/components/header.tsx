@@ -1,11 +1,11 @@
-import Link from "next/link";
-import Image from "next/image";
 import {
-	SignedIn,
-	SignedOut,
 	SignInButton,
 	SignOutButton,
+	SignedIn,
+	SignedOut,
 } from "@clerk/nextjs";
+import Image from "next/image";
+import Link from "next/link";
 
 import NavigationList from "./navigation";
 

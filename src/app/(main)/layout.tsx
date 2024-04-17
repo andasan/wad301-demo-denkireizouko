@@ -1,8 +1,8 @@
 import {
-	SignedIn,
-	SignedOut,
 	SignInButton,
 	SignOutButton,
+	SignedIn,
+	SignedOut,
 } from "@clerk/nextjs";
 
 import RightSideBar from "./_right-side-bar";

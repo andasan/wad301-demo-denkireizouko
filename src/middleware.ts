@@ -1,5 +1,5 @@
-import { type NextRequest, NextResponse } from "next/server";
 import { authMiddleware, redirectToSignIn } from "@clerk/nextjs";
+import { type NextRequest, NextResponse } from "next/server";
 
 export default authMiddleware({
 	publicRoutes: ["/", "/recipes"],
